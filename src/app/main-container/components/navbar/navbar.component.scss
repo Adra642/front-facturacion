@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.toolbar {
+  background-color: #1a50c4;
+  color: white;
+  justify-content: space-between;
+  height: 7%;
+}
+
+.button {
+  margin: 2px;
+  color: white;
+
+  &:hover {
+    background-color: #406cc9;
+  }
+}
+
+.icon {
+  color: white;
+}
+
+.text {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 2rem;
+}

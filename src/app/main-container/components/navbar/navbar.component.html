@@ -1,0 +1,18 @@
+<mat-toolbar class="toolbar">
+  <button
+    mat-icon-button
+    class="button"
+    aria-label="Menú"
+    (click)="notifyParent()"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <a routerLink="/home">
+    <button mat-button>
+      <span class="text">Sistema de Facturación</span>
+    </button>
+  </a>
+  <button mat-icon-button class="button" aria-label="Opciones de Cuenta">
+    <mat-icon class="icon">account_circle</mat-icon>
+  </button>
+</mat-toolbar>
