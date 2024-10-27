@@ -1,0 +1,46 @@
+.index {
+  margin: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+
+  & > * {
+    margin: 1rem;
+  }
+}
+
+.table-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit {
+  color: #005cbb;
+}
+
+.delete {
+  color: #c21414;
+}
+
+.mat-column-id {
+  width: 32px;
+  border-right: 1px solid #74777f;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-actions {
+  width: 120px;
+  border-left: 1px solid #74777f;
+  text-align: center;
+}
