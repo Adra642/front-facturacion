@@ -1,6 +1,6 @@
 <form [formGroup]="categoryForm()" (ngSubmit)="onSubmit()" class="add-form">
   <h2 class="title">
-    {{ categoryToEdit().name ? "Editar " : "Agregar " }} Categoría
+    {{ categoryToEdit().name ? "Editar " : "Agregar " }} {{ label }}
   </h2>
   <mat-form-field class="full-width">
     <mat-label>Nombre</mat-label>

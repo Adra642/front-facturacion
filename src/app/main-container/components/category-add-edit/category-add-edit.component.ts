@@ -45,6 +45,9 @@ export class CategoryAddEditComponent {
   private readonly categoryService = inject(CategoryService);
   private readonly router = inject(Router);
 
+  readonly label = 'categoría';
+  private readonly element = 'category';
+
   categoryToEdit = signal<Category>(emptyCategory);
 
   categoryForm: Signal<FormGroup> = computed(
@@ -78,7 +81,7 @@ export class CategoryAddEditComponent {
       this.categoryService[methodToUse](category).subscribe({
         next: () => {
           this.categoryForm().reset();
-          this.router.navigate(['/category/index']);
+          this.router.navigate([`/${this.element}/index`]);
         },
         error: (error) => {
           console.error('Error al guardar:', error);
@@ -94,10 +97,10 @@ export class CategoryAddEditComponent {
           '¿Está seguro de que desea cancelar? Los cambios no guardados se perderán.'
         )
       ) {
-        this.router.navigate(['/category/index']);
+        this.router.navigate([`/${this.element}/index`]);
       }
     } else {
-      this.router.navigate(['/category/index']);
+      this.router.navigate([`/${this.element}/index`]);
     }
   }
 }
