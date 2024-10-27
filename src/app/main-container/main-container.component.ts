@@ -8,7 +8,14 @@ import { NavbarComponent } from './components';
 @Component({
   selector: 'app-main-container',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatSidenavModule, NavbarComponent],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    NavbarComponent,
+    RouterLink,
+    RouterOutlet,
+  ],
   templateUrl: './main-container.component.html',
   styleUrl: './main-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

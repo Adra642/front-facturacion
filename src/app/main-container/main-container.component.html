@@ -36,41 +36,7 @@
       </div>
     </mat-drawer>
     <mat-drawer-content>
-      <div class="home">
-        <h2 class="title">Bienvenido al sistema de Facturación</h2>
-        <div class="options">
-          <a routerLink="/user/index">
-            <button mat-fab class="button">
-              <mat-icon class="icon-display">person</mat-icon>
-              <span class="text">Usuarios</span>
-            </button>
-          </a>
-          <a routerLink="/invoice/index">
-            <button mat-fab class="button">
-              <mat-icon class="icon-display"> receipt_long </mat-icon>
-              <span>Facturas</span>
-            </button>
-          </a>
-          <a routerLink="/supplier/index">
-            <button mat-fab class="button">
-              <mat-icon class="icon-display">storefront</mat-icon>
-              <span>Proveedores</span>
-            </button>
-          </a>
-          <a routerLink="/product/index">
-            <button mat-fab class="button">
-              <mat-icon class="icon-display">inventory_2</mat-icon>
-              <span>Productos</span>
-            </button>
-          </a>
-          <a routerLink="/category/index">
-            <button mat-fab class="button">
-              <mat-icon class="icon-display">sell</mat-icon>
-              <span>Categorías</span>
-            </button>
-          </a>
-        </div>
-      </div>
+      <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
 </div>
