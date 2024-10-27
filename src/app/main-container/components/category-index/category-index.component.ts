@@ -33,6 +33,9 @@ export class CategoryIndexComponent implements OnInit {
   private readonly categoryService = inject(CategoryService);
   private readonly snackBar = inject(MatSnackBar);
 
+  readonly element = 'category';
+  readonly label = 'categoría';
+
   columns = [
     {
       property: 'id',
@@ -63,6 +66,31 @@ export class CategoryIndexComponent implements OnInit {
     });
   }
 
+  delete(id: number) {
+    this.categoryService.removeCategory(id).subscribe({
+      next: (response) => {
+        this.categories = this.categories.filter((item) => item.id !== id);
+        this.totalItems = this.categories.length;
+        this.updateDataSource();
+      },
+      error: (error) => {
+        console.error(`Error deleting ${this.element}:`, error);
+        this.snackBar.open(
+          `No se puede eliminar la ${this.label} debido a que esta relacionado a otra entidad`,
+          'Cerrar',
+          { duration: 5000 }
+        );
+      },
+      complete: () => {
+        this.snackBar.open(
+          `La ${this.label} fue eliminado correctamente`,
+          'Cerrar',
+          { duration: 5000 }
+        );
+      },
+    });
+  }
+
   updateDataSource(): void {
     const startIndex = this.currentPage * this.pageSize;
     const endIndex = startIndex + this.pageSize;
@@ -73,31 +101,6 @@ export class CategoryIndexComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
     this.updateDataSource();
-  }
-
-  delete(id: number) {
-    this.categoryService.removeCategory(id).subscribe({
-      next: (response) => {
-        this.categories = this.categories.filter((item) => item.id !== id);
-        this.totalItems = this.categories.length;
-        this.updateDataSource();
-      },
-      error: (error) => {
-        console.error('Error deleting category:', error);
-        this.snackBar.open(
-          'No se puede eliminar la categoría debido a que esta relacionado a otra entidad',
-          'Cerrar',
-          { duration: 5000 }
-        );
-      },
-      complete: () => {
-        this.snackBar.open(
-          'La categoría fue eliminado correctamente',
-          'Cerrar',
-          { duration: 5000 }
-        );
-      },
-    });
   }
 
   applyFilter(event: Event) {

@@ -1,5 +1,5 @@
 <div class="index">
-  <h2 class="title">Índice de Categorías</h2>
+  <h2 class="title">Tabla de {{ label }}</h2>
   <div>
     <div class="table-options">
       <mat-form-field>
@@ -27,11 +27,11 @@
         <th mat-header-cell *matHeaderCellDef>
           {{ column.header }}
         </th>
-        <td mat-cell *matCellDef="let category">
+        <td mat-cell *matCellDef="let item">
           @if (column.property !== 'actions') {
-          {{ category[column.property] }}
+          {{ item[column.property] }}
           } @else {
-          <a [routerLink]="['/category/edit', category.id]">
+          <a [routerLink]="['/', element, 'edit', item.id]">
             <button class="edit" mat-icon-button aria-label="Editar registro">
               <mat-icon>edit</mat-icon>
             </button>
@@ -39,7 +39,7 @@
           <button
             class="delete"
             mat-icon-button
-            (click)="delete(category.id)"
+            (click)="delete(item.id)"
             aria-label="Eliminar registro"
           >
             <mat-icon>delete</mat-icon>
@@ -54,10 +54,10 @@
   </div>
 
   <div class="button-container">
-    <a routerLink="/category/add">
-      <button mat-flat-button extended [attr.aria-label]="'Añadir categoría'">
+    <a [routerLink]="['/', element, 'add']">
+      <button mat-flat-button extended [attr.aria-label]="'Añadir {{ label }}'">
         <mat-icon>add</mat-icon>
-        Añadir Categoría
+        Añadir {{ label }}
       </button>
     </a>
 
