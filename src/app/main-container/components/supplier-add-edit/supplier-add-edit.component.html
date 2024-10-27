@@ -1,0 +1,104 @@
+<form [formGroup]="supplierForm()" (ngSubmit)="onSubmit()" class="add-form">
+  <h2 class="title">
+    {{ supplierToEdit().name ? "Editar " : "Agregar " }} {{ label }}
+  </h2>
+
+  <mat-form-field class="full-width">
+    <mat-label>RUC</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="ruc"
+      placeholder="Ex. 20601234187"
+    />
+    @if (supplierForm().get("ruc")?.hasError('required')) {
+    <mat-error>El RUC es requerido</mat-error>
+    } @if (supplierForm().get("ruc")?.hasError('pattern')) {
+    <mat-error>El RUC debe tener 11 dígitos</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="name"
+      placeholder="Ex. Corporación 1"
+    />
+    @if (supplierForm().get("name")?.hasError('required')) {
+    <mat-error>El nombre es requerido</mat-error>
+    }@if (supplierForm().get('name')?.hasError('pattern')) {
+    <mat-error>Solo se permiten letras y números y símbolos</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="email"
+      placeholder="Ex. mail@example.com"
+    />
+    @if (supplierForm().get("email")?.hasError('required')) {
+    <mat-error>El email es requerido</mat-error>
+    } @if (supplierForm().get("email")?.hasError('email')) {
+    <mat-error>Ingrese una dirección de correo valida</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Teléfono</mat-label>
+    <input
+      type="tel"
+      matInput
+      formControlName="phone"
+      placeholder="Ex. 947123496"
+    />
+    @if (supplierForm().get("phone")?.hasError('required')) {
+    <mat-error>El teléfono es requerido</mat-error>
+    } @if (supplierForm().get("phone")?.hasError('pattern')) {
+    <mat-error>Ingrese un teléfono valido</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Dirección</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="address"
+      placeholder="Ex. Avenida 123"
+    />
+    @if (supplierForm().get("address")?.hasError('required')) {
+    <mat-error>La dirección es requerida</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="buttons">
+    <button
+      mat-flat-button
+      extended
+      [attr.aria-label]="'Registrar elemento'"
+      type="submit"
+      [disabled]="supplierForm().invalid"
+      disabledInteractive
+      matTooltip="Deben completarse los datos del formulario"
+    >
+      <mat-icon>add</mat-icon>
+      {{ supplierToEdit().name ? "Editar" : "Registrar" }}
+    </button>
+
+    <button
+      type="button"
+      mat-stroked-button
+      extended
+      [attr.aria-label]="'Cancelar registro'"
+      (click)="onCancel()"
+    >
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+  </div>
+</form>
