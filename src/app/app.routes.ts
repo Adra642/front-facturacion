@@ -27,4 +27,25 @@ export const routes: Routes = [
         (m) => m.CategoryAddEditComponent
       ),
   },
+  {
+    path: 'supplier/index',
+    loadComponent: () =>
+      import('./main-container/components/').then(
+        (m) => m.SupplierIndexComponent
+      ),
+  },
+  {
+    path: 'supplier/add',
+    loadComponent: () =>
+      import('./main-container/components/').then(
+        (m) => m.SupplierAddEditComponent
+      ),
+  },
+  {
+    path: 'supplier/edit/:id',
+    loadComponent: () =>
+      import('./main-container/components/').then(
+        (m) => m.SupplierAddEditComponent
+      ),
+  },
 ];
