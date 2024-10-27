@@ -1,0 +1,45 @@
+<form [formGroup]="categoryForm()" (ngSubmit)="onSubmit()" class="add-form">
+  <h2 class="title">
+    {{ categoryToEdit().name ? "Editar " : "Agregar " }} Categoría
+  </h2>
+  <mat-form-field class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="name"
+      placeholder="Ex. Servicios"
+    />
+    @if (categoryForm().get("name")?.hasError('required')) {
+    <mat-error>El nombre es requerido</mat-error>
+    } @if (categoryForm().get('name')?.hasError('pattern')) {
+    <mat-error>Solo se permiten letras y espacios</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="buttons">
+    <button
+      mat-flat-button
+      extended
+      [attr.aria-label]="'Registrar elemento'"
+      type="submit"
+      [disabled]="categoryForm().invalid"
+      disabledInteractive
+      matTooltip="Deben completarse los datos del formulario"
+    >
+      <mat-icon>add</mat-icon>
+      {{ categoryToEdit().name ? "Editar" : "Registrar" }}
+    </button>
+
+    <button
+      type="button"
+      mat-stroked-button
+      extended
+      [attr.aria-label]="'Cancelar registro'"
+      (click)="onCancel()"
+    >
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+  </div>
+</form>
