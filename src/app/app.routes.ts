@@ -48,4 +48,23 @@ export const routes: Routes = [
         (m) => m.SupplierAddEditComponent
       ),
   },
+  {
+    path: 'user/index',
+    loadComponent: () =>
+      import('./main-container/components/').then((m) => m.UserIndexComponent),
+  },
+  {
+    path: 'user/add',
+    loadComponent: () =>
+      import('./main-container/components/').then(
+        (m) => m.UserAddEditComponent
+      ),
+  },
+  {
+    path: 'user/edit/:id',
+    loadComponent: () =>
+      import('./main-container/components/').then(
+        (m) => m.UserAddEditComponent
+      ),
+  },
 ];
