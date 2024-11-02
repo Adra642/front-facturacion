@@ -8,6 +8,8 @@
     <input type="text" matInput formControlName="name" placeholder="Ex. John" />
     @if (userForm().get("name")?.hasError('required')) {
     <mat-error>El nombre es requerido</mat-error>
+    }@if (userForm().get("name")?.hasError('pattern')) {
+    <mat-error>El nombre solo debe contener letras</mat-error>
     }
   </mat-form-field>
 
@@ -21,6 +23,8 @@
     />
     @if (userForm().get("surname")?.hasError('required')) {
     <mat-error>El apellido es requerido</mat-error>
+    }@if (userForm().get("surname")?.hasError('pattern')) {
+    <mat-error>El apellido solo debe contener letras</mat-error>
     }
   </mat-form-field>
 
@@ -46,8 +50,12 @@
       [type]="hide() ? 'password' : 'text'"
       formControlName="password"
     />
-    @if (userForm().get("password")?.hasError('required')) {
-    <mat-error>La contraseña es requerida</mat-error>
+    @if (userForm().get("password")?.hasError('minlength')) {
+    <mat-error>La contraseña debe tener como mínimo 5 caracteres</mat-error>
+    } @if (userForm().get("password")?.hasError('maxlength')) {
+    <mat-error>La contraseña debe tener como máximo 25 caracteres</mat-error>
+    }@if (userForm().get("password")?.hasError('pattern')) {
+    <mat-error>La contraseña debe tener caracteres validos</mat-error>
     }
     <button
       type="button"
@@ -60,13 +68,6 @@
       <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
   </mat-form-field>
-  @if (userForm().get("password")?.hasError('min')) {
-  <mat-error>La contraseña debe tener como mínimo 5 caracteres</mat-error>
-  } @if (userForm().get("password")?.hasError('required')) {
-  <mat-error>La contraseña es requerida</mat-error>
-  }@if (userForm().get("password")?.hasError('pattern')) {
-  <mat-error>El email es requerido</mat-error>
-  }
 
   <mat-form-field class="full-width">
     <mat-label>Rol del Usuario</mat-label>

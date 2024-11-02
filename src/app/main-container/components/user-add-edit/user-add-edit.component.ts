@@ -80,7 +80,8 @@ export class UserAddEditComponent {
         password: new FormControl(this.userToEdit().password, {
           nonNullable: true,
           validators: [
-            Validators.min(5),
+            Validators.minLength(5),
+            Validators.maxLength(25),
             Validators.pattern(
               '^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};\'":\\\\|,.<>\\/?]*$'
             ),
