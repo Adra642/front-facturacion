@@ -9,4 +9,7 @@ export * from './supplier-add-edit/supplier-add-edit.component';
 export * from './user-index/user-index.component';
 export * from './user-add-edit/user-add-edit.component';
 
+export * from './product-index/product-index.component';
+export * from './product-add-edit/product-add-edit.component';
+
 export * from './home/home.component';
