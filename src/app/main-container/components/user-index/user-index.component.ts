@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -78,7 +73,7 @@ export class UserIndexComponent {
   pageSize = 5;
   currentPage = 0;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.userService.getAllUsers().subscribe((data) => {
       this.users = data;
       this.totalItems = data.length;

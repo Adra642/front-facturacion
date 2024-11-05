@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -29,7 +24,7 @@ import { CategoryService } from '@app/services';
   styleUrl: './category-index.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CategoryIndexComponent implements OnInit {
+export class CategoryIndexComponent {
   private readonly categoryService = inject(CategoryService);
   private readonly snackBar = inject(MatSnackBar);
 
@@ -58,7 +53,7 @@ export class CategoryIndexComponent implements OnInit {
   pageSize = 5;
   currentPage = 0;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.categoryService.getAllCategories().subscribe((data) => {
       this.categories = data;
       this.totalItems = data.length;

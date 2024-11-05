@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -29,7 +24,7 @@ import { SupplierService } from '@app/services';
   styleUrl: './supplier-index.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SupplierIndexComponent implements OnInit {
+export class SupplierIndexComponent {
   private readonly supplierService = inject(SupplierService);
   private readonly snackBar = inject(MatSnackBar);
 
@@ -74,7 +69,7 @@ export class SupplierIndexComponent implements OnInit {
   pageSize = 5;
   currentPage = 0;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.supplierService.getAllSuppliers().subscribe((data) => {
       this.suppliers = data;
       this.totalItems = data.length;
